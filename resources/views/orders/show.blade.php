@@ -93,8 +93,15 @@
                                 @if(!$order->paid_at && !$order->closed)
                                     <div class="payment-buttons">
                                         <a class="btn btn-primary btn-sm" href="{{ route('payment.alipay', ['order' => $order->id]) }}">支付宝支付</a>
+
                                     </div>
-                            @endif
+                                @endif
+                                @if(isset($order->extra['refund_disagree_reason']))
+                                    <div>
+                                        <span>拒绝退款理由：</span>
+                                        <div class="value">{{ $order->extra['refund_disagree_reason'] }}</div>
+                                    </div>
+                                @endif
                             <!-- 如果订单的发货状态为已发货则展示确认收货按钮 -->
                                 @if($order->ship_status === \App\Models\Order::SHIP_STATUS_DELIVERED)
                                     <div class="receive-button">
