@@ -25,4 +25,5 @@ Route::group([
 
     $router->post('orders/{order}/refund', 'OrdersController@handleRefund')->name('admin.orders.handle_refund');
 
+    $router->get('coupon_codes', 'CouponCodesController@index');
 });
